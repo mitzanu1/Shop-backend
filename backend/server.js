@@ -9,12 +9,11 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
-const dbUrl = 'mongodb+srv://mitzanu:250786aa@cluster1.j5uhq.mongodb.net/eShop?retryWrites=true&w=majority';
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-mongoose.connect(dbUrl , {
+mongoose.connect(MONGODB_URL , {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
