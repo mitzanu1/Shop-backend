@@ -18,6 +18,8 @@ mongoose.connect(dbUrl || 'mongodb://localhost/eShop', {
     useCreateIndex: true
 })
 
+const db = mongoose.connection
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.use('/api/users', userRouter)
 app.use('/api/products', productRouter)
