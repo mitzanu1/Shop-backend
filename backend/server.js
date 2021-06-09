@@ -23,7 +23,7 @@ mongoose.connect(dbUrl , {
 
 app.use('/api/users', userRouter)
 app.use('/api/products', productRouter)
-app.use('/api/orders', orderRouter)y
+app.use('/api/orders', orderRouter)
 app.get('/', (req,res) => {
     res.send('Server is ready')
 })
