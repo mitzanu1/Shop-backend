@@ -8,7 +8,7 @@ import orderRouter from './routers/orderRouter.js'
 dotenv.config()
 
 const app = express()
-const dbUrl = 'mongodb://mitzanu:250786aa@cluster1.j5uhq.mongodb.net/eShop';
+const dbUrl = 'mongodb://cluster1.j5uhq.mongodb.net/eShop';
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
