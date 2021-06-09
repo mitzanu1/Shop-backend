@@ -8,10 +8,11 @@ import orderRouter from './routers/orderRouter.js'
 dotenv.config()
 
 const app = express()
+const dbUrl = 'mongodb://mitzanu:250786aa@cluster1.j5uhq.mongodb.net/eShop';
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/eShop', {
+mongoose.connect(dbUrl || 'mongodb://localhost/eShop', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
