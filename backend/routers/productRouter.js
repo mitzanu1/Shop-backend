@@ -2,6 +2,7 @@ import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import data from '../data.js'
 import Product from '../models/productModel.js'
+import { isAuth } from '../utils.js'
 
 const productRouter = express.Router()
 
@@ -11,10 +12,23 @@ expressAsyncHandler(async(req,res)=>{
     res.send(products)
 }))
 
-productRouter.get('/seed', 
+productRouter.get('/seed',
+    isAuth,
     expressAsyncHandler(async(req,res)=>{
-    const createdProducts = await Product.insertMany(data.products)
-    res.send({createdProducts})
+    
+    const product = new Product({
+        name: req.body.name,
+        image: req.body.image,
+        brand: req.body.brand,
+        category: req.body.category,
+        description: req.body.description,
+        price: req.body.price,
+        numReviews: req.body.numReviews,
+        rating: req.body.rating,
+        inStock: req.body.inStock
+    })
+    const createdProduct = await product.save()
+    res.status(201).send({createdProduct})
 }))
 
 productRouter.get('/:id',
