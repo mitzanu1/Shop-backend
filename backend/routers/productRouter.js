@@ -12,7 +12,7 @@ expressAsyncHandler(async(req,res)=>{
     res.send(products)
 }))
 
-productRouter.get('/seed',
+productRouter.post('/seed',
     isAuth,
     expressAsyncHandler(async(req,res)=>{
     
